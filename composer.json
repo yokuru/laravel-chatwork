@@ -15,5 +15,22 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "php" : "^7.0",
+        "guzzlehttp/guzzle": "^6.3@dev",
+        "illuminate/bus": "^5.9@dev",
+        "illuminate/notifications": "^5.9@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Yokuru\\Chatwork\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Yokuru\\Chatwork\\ServiceProvider"
+            ]
+        }
+    }
 }
