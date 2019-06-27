@@ -1,0 +1,19 @@
+{
+    "name": "yokuru/laravel-chatwork",
+    "description": "Laravel notification driver for Chatwork.",
+    "keywords": [
+        "laravel",
+        "chatwork",
+        "notification"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "yokuru",
+            "email": "takashi.yokubo@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
