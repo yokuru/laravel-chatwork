@@ -59,7 +59,7 @@ class ChatworkChannelTest extends TestCase
     }
 
     /**
-     * Send the request correctly
+     * it should send the request
      */
     public function testSend()
     {
@@ -77,7 +77,7 @@ class ChatworkChannelTest extends TestCase
     }
 
     /**
-     * Send when an exception is thrown
+     * it should throw ChatworkException if the request fails
      */
     public function testSendWithError()
     {

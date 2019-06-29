@@ -16,9 +16,9 @@ class ChatworkMessage implements Message
     public $messages = [];
 
     /**
-     * @var bool
+     * @var int
      */
-    public $isSelfUnread = false;
+    public $selfUnreadStatus;
 
     /**
      * Set a self unread flag
@@ -27,7 +27,7 @@ class ChatworkMessage implements Message
      */
     public function selfUnread(bool $unread): self
     {
-        $this->isSelfUnread = $unread;
+        $this->selfUnreadStatus = (int) $unread;
         return $this;
     }
 
@@ -81,10 +81,8 @@ class ChatworkMessage implements Message
      */
     public function message(): string
     {
-        $text = '';
-        foreach ($this->messages as $message) {
-            $text .= $message->message();
-        }
-        return $text;
+        return implode("\n", array_map(function (Message $m) {
+            return $m->message();
+        }, $this->messages));
     }
 }

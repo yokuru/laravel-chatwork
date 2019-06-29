@@ -30,7 +30,7 @@ class ChatworkChannel
                 ],
                 'form_params' => [
                     'body' => $chatworkMessage->message(),
-                    'self_unread' => (int) $chatworkMessage->isSelfUnread,
+                    'self_unread' => $chatworkMessage->selfUnreadStatus,
                 ],
             ]);
         } catch (\Exception $e) {
