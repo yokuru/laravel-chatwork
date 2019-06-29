@@ -16,6 +16,22 @@ class ChatworkMessage implements Message
     public $messages = [];
 
     /**
+     * @var bool
+     */
+    public $isSelfUnread = false;
+
+    /**
+     * Set a self unread flag
+     * @param bool $unread
+     * @return ChatworkMessage
+     */
+    public function selfUnread(bool $unread): self
+    {
+        $this->isSelfUnread = $unread;
+        return $this;
+    }
+
+    /**
      * Add a plain text
      * @param string $message
      * @return ChatworkMessage

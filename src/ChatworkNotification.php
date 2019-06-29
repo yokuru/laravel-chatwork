@@ -27,5 +27,5 @@ abstract class ChatworkNotification extends Notification
      * @param  mixed $notifiable
      * @return ChatworkMessage
      */
-    public abstract function toChatwork($notifiable): Message;
+    public abstract function toChatwork($notifiable): ChatworkMessage;
 }

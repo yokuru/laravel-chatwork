@@ -4,26 +4,38 @@ declare(strict_types=1);
 namespace Yokuru\Chatwork;
 
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Config;
 
 class ChatworkChannel
 {
-    public function send($notificable, ChatworkNotification $notification)
+    /**
+     * @var Client
+     */
+    private $client;
+
+    public function __construct(Client $client)
     {
-        $message = $notification->toChatwork($notificable)->message();
-        $roomId = $notificable->routeNotificationFor('chatwork');
+        $this->client = $client;
+    }
 
-        $req = new Client();
-        $response = $req->post('https://api.chatwork.com/v2/rooms/' . $roomId . '/messages', [
-            'headers' => [
-                'X-ChatWorkToken' => config('chatwork.token'),
-            ],
-            'form_params' => [
-                'body' => $message,
-                'self_unread' => 0,
-            ],
-        ]);
+    public function send($notifiable, ChatworkNotification $notification)
+    {
+        $chatworkMessage = $notification->toChatwork($notifiable);
+        $roomId = $notifiable->routeNotificationFor('chatwork');
 
-        // TODO handling error
+        try {
+            $this->client->post('https://api.chatwork.com/v2/rooms/' . $roomId . '/messages', [
+                'headers' => [
+                    'X-ChatWorkToken' => Config::get('chatwork.token'),
+                ],
+                'form_params' => [
+                    'body' => $chatworkMessage->message(),
+                    'self_unread' => (int) $chatworkMessage->isSelfUnread,
+                ],
+            ]);
+        } catch (\Exception $e) {
+            throw new ChatworkException($e->getMessage(), $e->getCode(), $e->getPrevious());
+        }
     }
 
 }
