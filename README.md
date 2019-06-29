@@ -28,7 +28,7 @@ php artisan vendor:publish --provider="Yokuru\Chatwork\ServiceProvider"
 Open `.env` and set your Chatwork API Token like as below.
 
 ```
-CHATWORK_API_TOKEN=AAAAAAAAAAAAAA
+CHATWORK_API_TOKEN=XXXXXXXXXXXXXXXXXX
 ```
 
 ### 2. Create an notification class
@@ -56,7 +56,7 @@ https://laravel.com/docs/notifications
 
 
 ```
-Notification::route('chatwork', '{YOUR_ROOM_ID}')
+Notification::route('chatwork', '{ROOM_ID}')
     ->notify(new SampleNotification());
 ```
 
@@ -71,7 +71,7 @@ class User extends Authenticatable
     
     public function routeNotificationForChatwork()
     {
-        return '{ROOM_ID_OF_THIS_USER}';   
+        return '{ROOM_ID}';
     }
 }
 ```
@@ -87,9 +87,9 @@ $user->notify(new SampleNotification());
 You can create a chat message as below.
 
 ```
-(new SampleNotification())
-    ->to('999999')
-    ->info("Please confirm this.\nhttp://example.com/", 'Customer has been registered.')
+$message = new SampleNotification();
+$message->to('999999')
+    ->info("Please confirm this.\nhttp://example.com/", 'New Order #7489393')
     ->toAll()
     ->text('FYI');
 ```
