@@ -3,6 +3,7 @@ Laravel Chatwork
 
 [![Build Status](https://travis-ci.org/yokuru/laravel-chatwork.svg?branch=master)](https://travis-ci.org/yokuru/laravel-chatwork)
 [![Coverage Status](https://coveralls.io/repos/github/yokuru/laravel-chatwork/badge.svg?branch=master)](https://coveralls.io/github/yokuru/laravel-chatwork?branch=master)
+[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 
 [Laravel Notification](https://laravel.com/docs/notifications) driver for Chatwork.
 
@@ -135,3 +136,6 @@ $message->info('This is information.', 'Information title');
 
 ![info_with_title](https://github.com/yokuru/laravel-chatwork/raw/docs/images/info_with_title.png)
 
+## License
+
+MIT
