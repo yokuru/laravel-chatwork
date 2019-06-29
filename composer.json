@@ -22,7 +22,7 @@
         "illuminate/notifications": "^5.8"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.2",
+        "phpunit/phpunit": "^7.5 || ^8.2",
         "mockery/mockery": "^1.2",
         "orchestra/testbench": "^3.8",
         "php-coveralls/php-coveralls": "^2.1"
@@ -32,16 +32,16 @@
             "Yokuru\\Chatwork\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Yokuru\\ChatworkTest\\": "tests/"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
                 "Yokuru\\Chatwork\\ServiceProvider"
             ]
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Yokuru\\ChatworkTest\\": "tests/"
         }
     }
 }
